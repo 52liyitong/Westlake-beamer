@@ -1,0 +1,159 @@
+%-------------------------------------------------------------
+%  Package: beamertheme-CleanEasy
+%  Author: Jose Paulo Marchezi (jpmarchezi@gmail.com)
+%  Version: 1.0.3, 2025-04-17
+%  Link: https://github.com/zemarchezi/CleanEasy_BeamerTheme
+%  This is free and unencumbered software released into the
+%  public domain; see <http://unlicense.org> for details.
+%-------------------------------------------------------------
+
+%--------------------------------------
+%  Outer Theme Settings
+%--------------------------------------
+\definecolor{DarkBlue}{rgb}{0.15, 0.15, 0.5}
+\definecolor{yelloworange}{RGB}{255,165,0}
+% Frame numbering
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+
+% Navigation symbols (disabled)
+\setbeamertemplate{navigation symbols}{}
+
+
+% Standard footline
+\defbeamertemplate*{footline}{CleanEasy theme}{%
+  \leavevmode%
+  \begin{tikzpicture}[remember picture,overlay]
+  \coordinate (mid) at ([xshift=0.3\paperwidth]current page.south west);
+  \coordinate (start) at ([xshift=0ex,yshift=0ex]current page.south west);
+  
+  
+  \def\progressbarwidth{\paperwidth }
+  
+
+  \def\progressbarheight{3ex}
+  
+
+
+  \fill[DarkBlue] (start) rectangle ++(3\progressbarwidth , \progressbarheight);
+   \fill[yelloworange] (mid) rectangle ++(.37\progressbarwidth , \progressbarheight);
+
+\end{tikzpicture}%
+  \hbox{%
+
+    \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\hspace*{3ex}\textcolor{white}{\insertshortauthor}
+    \end{beamercolorbox}%
+    
+
+    \begin{beamercolorbox}[wd=.55\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}%
+
+      \hspace{1em}\textcolor{white}{\insertsection} 
+    \end{beamercolorbox}%
+    
+
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}%
+      \textcolor{white}{\insertshortdate{}\hspace*{2ex} \insertframenumber{}/\inserttotalframenumber}%
+      \hspace*{2ex}
+    \end{beamercolorbox}
+
+  }%
+  \vskip0pt%
+}
+
+
+% Empty footline for title and plain pages
+\defbeamertemplate{footline}{empty}{}
+
+
+% Header with logo support (optional)
+\defbeamertemplate*{headline}{ theme}{%
+  % Empty by default
+  % Uncomment and modify the following to add a header
+  %\begin{beamercolorbox}[wd=\paperwidth,ht=0.12\paperheight,dp=1ex]{title in head/foot}
+  %  \vbox to 0.12\paperheight{\vfil\inserttitlenavigationhorizontal{\paperwidth}{}{}\vfil}
+  %\end{beamercolorbox}
+}
+
+% Section page
+\defbeamertemplate*{section page}{CleanEasy theme}{%
+  \begin{centering}
+
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+      \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+
+    
+    
+  \end{centering}
+}
+
+% Sidebar navigation (disabled by default)
+\setbeamertemplate{sidebar left}{}
+\setbeamertemplate{sidebar right}{}
+
+% Background (can be customized)
+\setbeamertemplate{background canvas}[default]
+
+% Add optional logo in the top-right corner of each slide
+% Uncomment and modify to add a logo to all slides
+% \addtobeamertemplate{frametitle}{}{%
+%  \begin{tikzpicture}[remember picture,overlay]
+%    \node[anchor=north east,yshift=-5pt,xshift=-5pt] at (current page.north east) {
+%      \includegraphics[height=0.8cm]{logos/logo_small.png}
+%    };
+%  \end{tikzpicture}
+% }
+
+
+% Special handling for title page
+\AtBeginDocument{%
+  \setbeamertemplate{footline}[CleanEasy theme]
+  
+  % Use empty footline for title page and TOC
+  \BeforeBeginEnvironment{frame}{%
+    \setbeamertemplate{footline}[CleanEasy theme]%
+  }
+  
+  \apptocmd{\maketitle}{%
+    \setbeamertemplate{footline}[empty]%
+  }{}{}
+  
+  \apptocmd{\tableofcontents}{%
+    \setbeamertemplate{footline}[empty]%
+  }{}{}
+}
+
+\AtBeginSection[]
+{
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      
+      % 背景图片，铺满整页
+\node[
+  anchor=east,          % 锚点在图片左侧中间
+  at={([xshift=0pt] current page.east)}  % 放在页面左中位置
+] {
+  \includegraphics[height=.6\paperheight]{logos/background.png}
+};
+
+      
+      % 半透明覆盖层，淡化背景图（可选）
+     
+      
+      % 你的标题文字和线条
+      \node[
+        anchor=west, 
+        text width=0.6\paperwidth, 
+        align=left, 
+        font=\Large\bfseries
+      ] at ([xshift=-2cm]current page.center) {
+        \insertsectionhead
+      };
+      
+      \draw[thick, DarkBlue!40] 
+        ([xshift=-2cm, yshift=-1cm]current page.center) -- ++(\paperwidth/3,0);
+    \end{tikzpicture}
+  \end{frame}
+}

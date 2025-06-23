@@ -1,0 +1,33 @@
+%-------------------------------------------------------------
+%  Package: beamertheme-CleanEasy
+%  Author: Jose Paulo Marchezi (jpmarchezi@gmail.com)
+%  Version: 1.0.3, 2025-04-17
+%  Link: https://github.com/zemarchezi/CleanEasy_BeamerTheme
+%  This is free and unencumbered software released into the
+%  public domain; see <http://unlicense.org> for details.
+%-------------------------------------------------------------
+
+%--------------------------------------
+%  Font Settings
+%--------------------------------------
+
+\renewcommand{\familydefault}{\rmdefault}
+\setbeamerfont{structure}{family=\rmfamily,series=\mdseries}
+\setbeamerfont{title}{size=\LARGE,series=\bfseries,parent=structure}
+\setbeamerfont{subtitle}{size=\normalsize,parent=title}
+\setbeamerfont{date}{size=\scriptsize,series=\mdseries,parent=structure}
+\setbeamerfont{author}{size=\large,series=\mdseries,parent=structure}
+\setbeamerfont{institute}{size=\scriptsize,series=\mdseries,parent=structure}
+\setbeamerfont{section in toc}{size=\large,series=\bfseries,parent=structure}
+\setbeamerfont{section in head/foot}{size=\tiny,parent=structure}
+\setbeamerfont{subsection in toc}{size=\small,series=\mdseries,parent={section in toc}}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries,parent=structure}
+\setbeamerfont{framesubtitle}{parent=frametitle,size=\large}
+\setbeamerfont{caption}{size=\footnotesize}
+\setbeamerfont{item}{parent=structure,series=\mdseries}
+\setbeamerfont{block title}{size=\large,series=\mdseries,parent={structure,block body}}
+
+
+% Adicionando configuração para fórmulas matemáticas
+\usefonttheme{professionalfonts} % Importante! Remove tratamento especial do Beamer para fontes
+\usepackage{cmbright}

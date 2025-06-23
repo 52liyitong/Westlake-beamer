@@ -1,0 +1,37 @@
+%-------------------------------------------------------------
+%  Package: beamertheme-CleanEasy
+%  Author: Jose Paulo Marchezi (jpmarchezi@gmail.com)
+%  Version: 1.0.3, 2025-04-17
+%  Link: https://github.com/zemarchezi/CleanEasy_BeamerTheme
+%  This is free and unencumbered software released into the
+%  public domain; see <http://unlicense.org> for details.
+%-------------------------------------------------------------
+
+%--------------------------------------
+%  Color Settings
+%--------------------------------------
+
+% define custom colors
+\definecolor{MutedRed}{rgb}{0.97, 0.92, 0.92}
+\definecolor{MutedGreen}{rgb}{0.92, 0.97, 0.92}
+\definecolor{MutedBlue}{rgb}{0.92, 0.92, 0.97}
+\definecolor{MutedBlack}{rgb}{0.95, 0.95, 0.95}
+
+\definecolor{MediumRed}{rgb}{0.925, 0.345, 0.345}
+\definecolor{MediumGreen}{rgb}{0.37, 0.7, 0.66}
+\definecolor{MediumBlue}{rgb}{0.015, 0.315, 0.45}
+\definecolor{MediumBlack}{rgb}{0.219, 0.259, 0.349}
+
+\definecolor{DarkBlue}{rgb}{0.05, 0.15, 0.35}
+
+% set beamer color themes
+\usecolortheme[named=DarkBlue]{structure}
+
+% customize colors for elements
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{block title}{fg=white,bg=MediumBlue}
+\setbeamercolor{block body}{fg=black,bg=MutedBlue}
+\setbeamercolor{block title example}{fg=white,bg=MediumGreen}
+\setbeamercolor{block body example}{fg=black,bg=MutedGreen}
+\setbeamercolor{block title alerted}{fg=white,bg=MediumRed}
+\setbeamercolor{block body alerted}{fg=black,bg=MutedRed}

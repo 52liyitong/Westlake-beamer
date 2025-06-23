@@ -1,0 +1,28 @@
+
+% Configure code listings
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!60!black},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{black!30},
+  backgroundcolor=\color{black!5},
+  numbers=left,
+  numberstyle=\tiny\color{black!70},
+  numbersep=5pt
+}
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.7\paperwidth,ht=2.5ex,dp=1ex,left]{section in head/foot}%
+      \hspace{1em}\insertsection
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.3\paperwidth,ht=2.5ex,dp=1ex,right]{section in head/foot}%
+      \insertframenumber{} / \inserttotalframenumber\hspace{1em}
+    \end{beamercolorbox}%
+  }%
+  
+}
