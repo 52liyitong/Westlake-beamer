@@ -16,6 +16,9 @@ beamerinnerthemeCleanEasy.sty：调整此文件以进行布局更改。
 configs.tex：更新此文件以定制页脚和章节页。
 如果你有一些建议，欢迎通过校内邮箱 zhangxun@westlake.edu.cn联系我。
 
+对于之前没有接触过latex的同学，我推荐看一下https://www.overleaf.com/learn/latex/Beamer，latex排版其实比想象的简单。如果你没有格式上大改动的需求的话，实现简单的文本替换就可以了。
+导出的pdf格式可以直接播放，如果实在需要转成ppt格式，我建议把内容全部做完之后，将导出的pdf转为图片，然后插入到ppt里面。因为beamer相对比较复杂，pdf转ppt的工具通常都会导致格式混乱。
+
 希望这个模板能帮助到大家！祝大家科研和学习都顺顺利利的！
 
 Free LaTeX Beamer Template for Westlake Students and Teachers
