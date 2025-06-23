@@ -19,7 +19,7 @@ configs.tex：更新此文件以定制页脚和章节页。
 感谢您的分享和推荐！
 
 LaTeX Beamer 学习资源推荐
-对于初次接触 LaTeX 的同学来说，Overleaf 的教程确实是一个非常棒的起点。您推荐的这个链接：
+对于初次接触 LaTeX 的同学来说，Overleaf 的教程确实是一个非常棒的起点。推荐看看这个链接：
 
 https://www.overleaf.com/learn/latex/Beamer
 
