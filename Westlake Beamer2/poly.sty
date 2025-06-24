@@ -1,0 +1,233 @@
+\ProvidesPackage{poly}[2023/04/29 Beamer Theme for PolyU by Crumble Jon.]
+
+% ================================================================================
+% Packages
+% ================================================================================
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\usepackage{transparent}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{amsthm}
+
+\RequirePackage{verbatim}
+\RequirePackage{hyperref}
+\RequirePackage{listings}
+
+% ================================================================================
+% Color Accents
+% ================================================================================
+
+\definecolor{polyured}					{HTML}{A02337}
+\definecolor{polyured2}					{HTML}{A63547}
+\definecolor{polyugrey}					{HTML}{58595B}
+\definecolor{skyblue}					{HTML}{6BA4B8}
+\definecolor{midnightblue}              {HTML}{191970}
+
+\definecolor{deepblue}                  {HTML}{00008B}
+\definecolor{orange}                    {HTML}{FFA500}
+\definecolor{polyugrey}					{HTML}{58595B}
+\definecolor{skyblue}					{HTML}{6BA4B8}
+\definecolor{beige}                     {HTML}{D0D0D8}
+
+
+\setbeamercolor{title}					{fg=white}
+\setbeamercolor{author}					{fg=white}
+\setbeamercolor{date}					{fg=white}
+\setbeamercolor{institute}				{fg=white}
+\setbeamercolor{head}					{bg=deepblue}
+
+\setbeamercolor{alerted text}			{fg=polyured}
+\setbeamercolor{normal text}			{fg=black}
+\setbeamercolor{structure}				{fg=deepblue}
+
+\setbeamercolor{jumbo}					{bg=deepblue}
+\setbeamercolor{progress bar}			{fg=deepblue, bg=orange}
+\setbeamercolor{progress bar progress}	{use=progress bar, bg=progress bar.fg}
+
+\setbeamercolor{block title}			{use=structure, fg=white, bg=deepblue}
+\setbeamercolor{block body}				{use=structure, fg=darkgray, bg=deepblue!10}
+
+\hypersetup{
+	colorlinks,
+	linkcolor=black,
+	anchorcolor=orange,
+	citecolor=blue!80,
+	urlcolor=deepblue,
+}
+
+% ================================================================================
+% Fonts
+% ================================================================================
+
+\setbeamerfont{title}					{series=\bfseries, size=\Large}
+\setbeamerfont{subtitle}				{series=\mdseries, size=\normalsize}
+
+\setbeamerfont{author}					{size=\small}
+\setbeamerfont{date}					{size=\footnotesize}
+\setbeamerfont{institute}				{size=\footnotesize}
+
+\setbeamerfont{alerted text}			{series=\bfseries}
+
+\setbeamerfont{frametitle}				{series=\bfseries}
+\setbeamerfont{framesubtitle}			{series=\mdseries}
+\setbeamerfont{footline}				{size=\scriptsize}
+\setbeamerfont{block title}				{size=\normalsize, series=\bfseries}
+\setbeamerfont{block body}				{size=\normalsize}
+
+\usefonttheme{serif}
+
+% ================================================================================
+% Basic Settings
+% ================================================================================
+
+% cancel navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% prettier boxes
+\setbeamertemplate{blocks}[rounded]
+
+% bullet points
+\setbeamertemplate{itemize item}		{\textbullet}
+\setbeamertemplate{itemize subitem}		{\textemdash}
+\setbeamertemplate{itemize subsubitem}	{\ensuremath{\circ}}
+
+% paragraph spacing
+\setlength{\parskip}					{5pt}
+
+% code environment
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{deepblue},
+    keywordstyle=\color{polyured},
+    numberstyle=\tiny\color{polyugrey},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    xleftmargin=10pt,
+    xrightmargin=10pt,
+}
+\lstset{style=mystyle}
+
+% ================================================================================
+% Slide Templates
+% ================================================================================
+
+% headline for all frames
+\setbeamertemplate{headline}{
+	\ifnum\theframenumber=1
+		% not display the headline for the title page
+	\else
+		\begin{beamercolorbox}[wd=\paperwidth,ht=40pt]{head}
+			\vspace*{9pt}\hspace{360pt}\includegraphics[width=70pt]{source/botttom_new.png}
+		\end{beamercolorbox}
+	\fi
+}
+
+% frame title and subtitle
+\setbeamertemplate{frametitle}{
+    \begin{picture}(0,0)
+        \ifx\insertframesubtitle\@empty%
+            \put(0,27){\usebeamerfont{frametitle}\usebeamercolor[fg]{title}\insertframetitle}%
+		\else%
+			\put(0,32){\usebeamerfont{frametitle}\usebeamercolor[fg]{title} \insertframetitle}%
+			\put(0,20){\usebeamerfont{framesubtitle}\usebeamercolor[fg]{title} \insertframesubtitle }
+		\fi
+    \end{picture}
+}
+
+% title page
+\setbeamertemplate{title page}{
+	\begin{picture}(0,0)
+		\put(-200,-180){\transparent{0.2}
+    		{\includegraphics[width=1.4\paperwidth]{source/line2.png}}}
+        \put(-10,-77){
+             \transparent{0.9}
+            \begin{beamercolorbox}[wd=1.1\paperwidth,ht=140pt]{jumbo}
+            \end{beamercolorbox}
+        }
+        \put(320,-54){\includegraphics[width=300pt]{source/botttom_new.png}}
+		\put(0,25){%
+			\begin{minipage}{300pt}
+				\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+				\vspace{10pt}
+				\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle
+			\end{minipage}
+		}
+		\put(0,-45){%
+			\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor
+		}
+        \put(0,-58){%
+			\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute
+		}
+		\put(0,-70){%
+			\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate
+		}
+        
+	\end{picture}
+}
+
+% progress bar at the bottom
+\defbeamertemplate{footline}{progress bar}{
+	\dimen0=\paperwidth
+    \divide\dimen0 by \inserttotalframenumber
+	\multiply\dimen0 by \insertframenumber
+	\edef\progressbarwidth{\the\dimen0}
+	\leavevmode%
+	\ifnum\theframenumber=1
+	\else
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2pt,dp=1pt]{progress bar}
+			\begin{beamercolorbox}[wd=\progressbarwidth,ht=2pt,dp=1pt]{progress bar progress}
+			\end{beamercolorbox}%
+		\end{beamercolorbox}%
+	\fi
+}
+
+\setbeamertemplate{footline}[progress bar]
+
+% last frame
+\newcommand{\backmatter}{
+	\begingroup
+	\setbeamertemplate{headline}{}
+	\setbeamertemplate{footline}{}
+	\begin{frame}[c]{}
+		\begin{picture}(0,0)
+			\put(60,-30){\includegraphics[width=0.2\paperwidth]{source/logo.png}}
+		\end{picture}
+        \begin{picture}(0,0)
+			\put(160,-60){\includegraphics[width=0.4\paperwidth]{source/wenzi.png}}
+		\end{picture}
+	\end{frame}
+\endgroup
+}
+
+% style of sections and subsections in ToCs
+\setbeamertemplate{section in toc}{
+	$\blacktriangleright$~\textbf{\inserttocsection}
+}
+\setbeamertemplate{subsection in toc}{}
+\setbeamertemplate{frametitle continuation}{}
+
+% begin of sections
+\AtBeginSection[]
+{
+    \begingroup
+    \begin{frame}{Contents}{}
+    	\begin{picture}(0,0)
+         \transparent{0.07}
+    		\put(-50,-180){\includegraphics[width=1.1\paperwidth]{source/line.png}}
+    	\end{picture}
+        \tableofcontents[currentsection]
+    \end{frame}
+    \endgroup
+}
