@@ -1,0 +1,57 @@
+% Language and Encoding Settings
+\usepackage[english]{babel} % Sets the document language to English.
+\usepackage[UTF8]{ctex}     % Enables Chinese language support with UTF-8 encoding.
+\usepackage{CJKutf8}        % Another package for Chinese language support.
+
+% Page Layout and Margins
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry} % Sets page size and margins.
+
+% Core Formatting and Document Structure
+\usepackage{makecell}       % Provides commands for creating flexible cells in tables.
+\usepackage{amsmath}        % Essential for mathematical formulas and equations.
+\usepackage{graphicx}       % Allows the inclusion of graphics and images.
+\usepackage{subcaption}     % For creating sub-figures within a figure environment.
+\usepackage{booktabs}       % For creating professional-looking tables.
+\usepackage{cite}           % For managing and formatting bibliographical citations.
+\usepackage{abstract}       % For creating abstract environments.
+\usepackage{sectsty}        % For customizing section titles.
+\usepackage{fancyhdr}       % For adding headers and footers to pages.
+\pagestyle{fancy}           % Sets page style to fancy.
+\fancyhf{}                  % Clears all current header and footer definitions.
+
+% Interactivity and Linking
+\usepackage[colorlinks=true, allcolors=blue]{hyperref} % Enables hyperlinking within the PDF document (blue links).
+
+\hypersetup{colorlinks=true, % activation link
+            linkcolor=Westlake-Blue, % internal link
+            citecolor=Westlake-Blue, % reference link
+            filecolor=Westlake-Orange, % file link
+            urlcolor=Westlake-Blue % external link
+}
+
+% Content Specific Packages
+\usepackage{listings}       % For inserting code listings with syntax highlighting.
+\usepackage{xcolor}         % For defining colors.
+\usepackage{multicol}       % For creating multi-column layouts.
+\usepackage{multirow}       % For creating cells that span multiple rows in tables.
+\usepackage{siunitx}        % For typesetting units.
+\usepackage{tikz}           % For creating vector graphics.
+
+% Author and Captioning
+\usepackage{authblk}        % For handling author affiliations.
+\usepackage{caption}        % For customizing captions for figures and tables.
+
+\lstset{
+    breaklines,                                 % 自动将长的代码行换行排版
+    extendedchars=false,                        % 解决代码跨页时，章节标题，页眉等汉字不显示的问题
+    backgroundcolor=\color[rgb]{0.96,0.96,0.96},% 背景颜色
+    keywordstyle=\color{blue}\bfseries,         % 关键字颜色
+    identifierstyle=\color{black},              % 普通标识符颜色
+    commentstyle=\color[rgb]{0,0.6,0},          % 注释颜色
+    stringstyle=\color[rgb]{0.58,0,0.82},       % 字符串颜色
+    showstringspaces=false,                     % 不显示字符串内的空格
+    numbers=left,                               % 显示行号
+    captionpos=t,                               % title在上方(在bottom即为b)
+    frame=single,                               % 设置代码框形式
+    rulecolor=\color[rgb]{0.8,0.8,0.8},         % 设置代码框颜色
+}  

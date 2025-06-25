@@ -1,0 +1,163 @@
+\documentclass{article}
+
+\usepackage{Westlaketheme}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%Header%%%%%%%%%%%%%%%%%%%
+\fancyhf{}
+\fancyhead[L]{
+    \begin{minipage}[c]{0.2\textwidth}
+        \includegraphics[height=9mm]{logo.png}  %Used to set the picture on the left side of the header
+    \end{minipage}
+}
+\fancyhead[C]{Experiment report}               %Used to set the text in the middle of the header
+\fancyfoot[C]{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Cover %%%%%%%%%%%%%%
+\setlength{\headwidth}{\textwidth}
+\fancyhfoffset[L]{\dimexpr0.5\textwidth-0.5\textwidth\relax}
+\title{\textbf {Westlake University Report Template} }
+\author{\Large Haotian Shen\\~\\~}
+
+
+\begin{document}
+
+\definecolor{Westlake-Blue}{RGB}{0,71,144}
+\definecolor{Westlake-Orange}{RGB}{240,142,0} %Define the normal color (maybe not official)
+
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    %Logo
+    \begin{figure}[!h]
+        \centering
+        \vspace{1cm}
+        \includegraphics[scale=0.5]{logo.png}
+        \label{fig:logo}
+    \end{figure}
+    
+    \begin{center}
+        \vspace{1cm}
+    	%\textsl{\Large Westlake University }\\[0.5cm] 
+        %set title style here
+    	\makeatletter
+    	\HRule \\[1cm]
+    	{ \huge \bfseries \@title}\\[0.4cm] 
+    	\HRule \\[1.7cm]
+        
+        %Author style is here
+    	\begin{minipage}{0.4\textwidth}
+        \vspace{1cm}
+    	\begin{center}
+    			\emph{\textbf{\Large Author:}}\\
+    			\@author 
+    	\end{center}
+    	\end{minipage}
+        
+    	\vfill 
+    	\makeatother
+    	{\large Contact: shenhaotian@westlake.edu.cn}\\[0.5cm]
+    	{\large \today}\\[2cm] 
+    \end{center}
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%% Abstract %%%%%%%%%%%%%%%%
+\setcounter{page}{1}
+\sectionfont{\centering}
+I
+Abstract
+
+\addcontentsline{toc}{section}{Abstract} %Manually add the section to the toc
+
+\section*{Abstract} %Add * after section will delete the index prefix
+
+This experiment report template used in Westlake University. Since \LaTeX\, gives more DIY freedom to users, I will just present the cover, and show some necessary but tricky methods, instead of including all the basic usage or regious template. But if you want to add more to this template, like normalized color based on Westlake University logo, more pretty style in code, image, cover etc., feel free to create issues on \href{https://github.com/52liyitong/Westlake-beamer}{https://github.com/52liyitong/Westlake-beamer}  or contact me.
+
+
+\clearpage
+
+%%%%%%%%%%%%%%%% Table of Content %%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Table of Contents}
+II
+Table of Contents
+\tableofcontents
+\setcounter{page}{2}
+\newpage
+
+%%%%%%%%%%%%%%%%%% Body %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\section{Header and Footer}
+    \begin{itemize}
+        \item Header is designed at the top of the tex.
+        \item Footer is defined by \verb|\footnote| here\footnote{Here is the footer}
+    \end{itemize}
+    
+
+\section{Code Insertion}
+
+\subsection{Internal Code}
+Use \verb|lstlisting| to insert the internal code.
+\begin{lstlisting}[language=MATLAB, title = MATLAB]
+n = 10;
+a = zeros(1,n);
+tvec = 0:0.01:n;
+\end{lstlisting}
+
+\begin{lstlisting}[language=python,title=python]
+def main():
+    print("Hello World!")
+
+main()
+\end{lstlisting}
+
+\begin{lstlisting}[language=C++,title=C++]
+#include<iostrem>
+using namespace std;
+int main(){
+    cout << "Hello World!" << endl;
+    return 0;
+}
+\end{lstlisting}
+\subsection{External Code}
+Use \verb|\lstinputlisting| to insert the external code.
+\lstinputlisting[language=python, title = python]{hello.py}
+
+\newpage
+\section{Hyperlink}
+%\includegraphics[width=\textwidth]{logo.png}
+
+\begin{itemize}
+    \item Internal link: \verb|\ref{}|, the content inside \{\} is the label in figure or table, like the link to Figure: \ref{fig:logo}
+    \item External Link: \verb|href{[link]}{[description]}|, like the link to \href{https://github.com/52liyitong/Westlake-beamer}{our github project}
+    \item You can change the color of all the hyperlink in \verb|\hypersetup|, Westlaketheme.sty
+\end{itemize}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{logo.png}
+    \caption{Internal link example}
+    \label{fig:logo}
+\end{figure}
+\section{Reference}
+
+Use \verb|\cite{}| to refer the external reference, where the reference is listed at the bottom of the report by:
+\begin{lstlisting}[title=Reference List]
+\begin{thebibliography}{9}
+    \bibitem{1}
+\end{thebibliography}
+\end{lstlisting}
+
+\newpage
+
+\section*{Appendix}
+\addcontentsline{toc}{section}{Appendix}
+You can attach the whole code, results or refences here.
+
+\begin{thebibliography}{9}
+    \bibitem{1} https://github.com/AlmostGPH/SDU-Latex-Template-for-Document
+\end{thebibliography}
+\end{document}
