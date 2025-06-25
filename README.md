@@ -1,4 +1,4 @@
-# Westlake-beamer
+# Westlake-beamer1
 西湖大学 LaTeX Beamer 免费模板
 大家好！很高兴能与各位分享一个基于 CleanEasy Beamer 主题修改的 LaTeX 模板。西湖大学的学生和老师们都可以使用这个模板。
 
@@ -27,6 +27,9 @@ https://www.overleaf.com/learn/latex/Beamer
 导出的pdf格式可以直接播放，如果实在需要转成ppt格式，我建议把内容全部做完之后，将导出的pdf转为图片，然后插入到ppt里面。因为beamer相对比较复杂，pdf转ppt的工具通常都会导致格式混乱。
 
 希望这个模板能帮助到大家！祝大家科研和学习都顺顺利利的！
+
+#westlake beamer2:
+上传了一个新的模版，是基于polyu的模版改的，图片均来自学校官网，线稿是ai提取的。
 
 Free LaTeX Beamer Template for Westlake Students and Teachers
 Hello everyone! I'm delighted to share a LaTeX template I've modified, based on the CleanEasy Beamer theme. This template is freely available for all Westlake University students and teachers to use.
