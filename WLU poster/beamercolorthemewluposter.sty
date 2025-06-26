@@ -1,0 +1,54 @@
+% SPDX-FileCopyrightText: 2025 Alexandru Fikl <alexfikl@gmail.com>
+% SPDX-License-Identifier: CC-BY-4.0
+
+\def\fileversion{v0.2}
+\def\filedate{2025/04/14}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemewluposter}[\filedate \fileversion WLU Poster Color Theme]
+
+% <<< colors
+
+% NOTE: https://www.wlu.ca/about/our-brand/
+\definecolor{WLULightBlue}{RGB}{0, 0, 139}
+\definecolor{WLUDarkBlue}{RGB}{0, 0, 139}
+\definecolor{WLUYellow}{RGB}{255,165,0}
+
+% NOTE: taken from the document itself
+\definecolor{WLUBeamerBlue}{RGB}{0, 0, 139}
+\definecolor{WLUBeamerGray}{RGB}{246, 246, 246}
+\definecolor{WLUBeamerDarkGray}{RGB}{182, 182, 182}
+
+% NOTE: a slightly darker yellow for use in the text
+\colorlet{WLUTextYellow}{WLUYellow!80!black}
+
+% >>>
+
+% <<< styles
+
+\setbeamercolor{title}{fg=white, bg= , parent=normal text}
+\setbeamercolor{titlelike}{fg= , bg= , parent=normal text}
+\setbeamercolor{author}{use=normal text, bg= , parent=normal text}
+\setbeamercolor{date}{use=normal text, bg= , parent=normal text}
+\setbeamercolor{institute}{use=normal text, parent=normal text}
+
+\setbeamercolor{section title}{fg=white, use=title}
+\setbeamercolor{frametitle}{fg=WLUDarkBlue, use=titlelike}
+
+\setbeamercolor{headline}{fg=white,bg=WLUDarkBlue}
+\setbeamercolor{headline rule}{bg=WLUYellow}
+
+\setbeamercolor{url text}{fg=WLUDarkBlue}
+
+\setbeamercolor{block title}{fg=WLUDarkBlue}
+\setbeamercolor{alerted text}{fg=WLUTextYellow}
+\setbeamercolor{example text}{fg=WLULightBlue}
+
+\setbeamercolor{enumerate item}{fg=WLUYellow, parent=normal text}
+\setbeamercolor{description item}{fg=WLUYellow, parent=normal text}
+
+\setbeamercolor{caption}{fg=WLUBeamerGray!50!black, parent=normal text}
+
+% >>>
+
+%% vim: foldmarker=<<<,>>>:foldmethod=marker:nospell:filetype=tex 

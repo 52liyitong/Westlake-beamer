@@ -1,0 +1,332 @@
+\documentclass[final]{beamer}
+
+% <<< packages
+
+% `size` and `orientation` are options for `beamerposter`.
+% `scale` can be used to make the fonts bigger, as required.
+\usetheme[size=a1,orientation=landscape, scale=1.0]{wluposter}
+
+% load math packages
+\usepackage{amsmath}
+
+% load more packages
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+% for displaying code (using `minted` will probably give better results)
+\usepackage{listings}
+
+% for qr code in header
+% \usepackage{qrcode}
+
+% >>>
+
+% <<< formatting
+
+% use numbers for footnotes inside columns
+% \renewcommand\thempfootnote{\arabic{mpfootnote}}
+
+% add custom logos
+% \headerlogoleft{\includegraphics[width=0.08\paperwidth]{assets/wlu-logo-en-alt.png}}
+% \headerlogoright{\includegraphics[width=0.08\paperwidth]{assets/wlu-logo-faculty.png}}
+% \headerlogoright{\qrcode[height=0.06\paperwidth]{https://github.com/alexfikl/wlu-poster}}
+
+% 自定义右侧logo位置，使图片往下移动
+
+
+% remove logos
+% \headerlogoleft{}
+% \headerlogoright{}
+
+
+% >>>
+
+% <<< commands
+
+% define some helpful commands
+\NewDocumentCommand \dx { O{x} } {\,\mathrm{d} #1}
+
+% >>>
+
+% <<< metadata
+
+\title{Westlake University: \\[0.5em] A simple and modern Conference Poster Template}
+\author{xz\inst{1} \and zx\inst{2}}
+\institute[shortinst]{\inst{1} Westlake University \quad \inst{2} Westlake University}
+
+% add content to the footer
+\footername{\href{https://www.westlake.edu.cn/}{https://www.westlake.edu.cn/}}
+\footerlocation{27th Conference 2025, Hangzhou --- September 22--25}
+\footeremail{\href{mailto:info@westlake.edu.cn}{info@westlake.edu.cn}}
+
+% >>>
+
+\begin{document}
+
+% NOTE: each frame will create a new page with a new poster, so you probably do
+% not want more of them in a single file.
+\begin{frame}[fragile]
+
+% NOTE: this uses a three column format because it is in landscape mode. If you
+% are using a portrait mode, two columns is probably better to allow for larger text
+\begin{columns}[t]
+
+\separatorcolumn
+
+\begin{column}{0.3\paperwidth}
+
+\begin{block}{Introduction}
+    The \textbf{WLU Conference Poster Theme} is a modern theme based on
+    \texttt{beamerposter} that uses the official
+    \textcolor{WLULightBlue}{WLU branding}\footnote{\url{https://www.wlu.ca/about/our-brand/}}. Some
+    of its elements and styling are inspired by \textcolor{WLULightBlue}{Gemini}
+    theme\footnote{\url{https://github.com/anishathalye/gemini/}}.
+
+    \bigskip
+    It comes with a few nifty features:
+    \begin{itemize}
+        \item Use of the official color scheme for WLU throughout.
+        \item Customized block environments.
+        \item Easy to extend and modify separate parts (header, fonts, etc).
+    \end{itemize}
+
+    \bigskip
+    Separate parts are available as e.g. \texttt{\textbackslash usecolortheme\{wluposter\}}!
+    \bigskip
+
+    To use it in you documents add something like the following
+
+    \begin{center}
+    \begin{lstlisting}[language=TeX]
+    \documentclass[final]{beamer}
+    % 1. The theme supports different sizes, e.g. a0, a1, ...
+    % 2. It can also be viewed in "landscape" or "portrait" mode
+    \usetheme[size=a1,orientation=landscape]{wluposter}
+
+    % 3. You can select other color schemes or box types
+    \usecolortheme{wluposter}
+    \end{lstlisting}
+    \end{center}
+
+    \bigskip
+    More information is available in \texttt{template.tex}.
+    \bigskip
+\end{block}
+
+\begin{block}{Colors and Fonts}
+    This theme uses the \emph{Myriad Pro} font. This is a clean \emph{sans serif}
+    font from Adobe that is recommended by the official WLU branding.
+
+    \bigskip
+    The theme has three standard colors:
+    \begin{itemize}
+        \item A nice \textcolor{WLULightBlue}{\textbf{light blue}} (\texttt{WLULightBlue}).
+        \item A bolder \textcolor{WLUDarkBlue}{\textbf{dark blue}} (\texttt{WLUDarkBlue}).
+        \item An attention grabbing \textcolor{WLUYellow}{\textbf{yellow}}
+        (\texttt{WLUYellow})!
+        \item Variants \texttt{color!x} can also be used to darken or lighten them
+    \end{itemize}
+
+    \bigskip
+    These can be used for emphasizing \textcolor{WLULightBlue}{text} or for
+    more obvious \alert{alerts}. Standard \textbf{bold} and \textit{italic} emphasis
+    can of course also be used!
+\end{block}
+
+\begin{alertblock}{Lists, enumerations, and descriptions}
+\heading{Lists}
+
+\begin{itemize}
+    \item Itemize lists are nicely customized ...
+    \begin{itemize}
+        \item All the way down ...
+        \begin{itemize}
+            \item To the third level!
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\heading{Enumerate}
+
+\begin{enumerate}
+    \item We can also enumerate!
+    \item Many things!
+    \item It's great!
+\end{enumerate}
+
+\heading{Description}
+
+\begin{description}
+    \item[WLU] And describe our university in exquisite detail, so that we
+        can capture all its multiline greatness!
+\end{description}
+\end{alertblock}
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{0.3\paperwidth}
+\begin{block}{Blocks}
+
+    We have various standard Beamer blocks styled in a pleasing fashion. You
+    might have noticed their use for each of the "sections" up to now.
+
+    \bigskip
+
+    \begin{block}{Block 1}
+        Some block block: \verb|\begin{block} ... \end{block}|.
+    \end{block}
+
+    \begin{alertblock}{Alert 1}
+        Some alert block: \verb|\begin{alertblock} ... \end{alertblock}|.
+    \end{alertblock}
+
+    \begin{exampleblock}{Example 1}
+        Some example block: \verb|\begin{exampleblock} ... \end{exampleblock}|.
+    \end{exampleblock}
+
+    \bigskip
+
+    You probably should not nest these as we just did here!
+\end{block}
+
+\begin{block}{Figures}
+    You can also add figures to each block.
+    \bigskip
+
+    \begin{figure}
+    \begin{tikzpicture}[scale=2.8]
+        % Draw axes
+        \draw [<->,thick] (0,2) node (yaxis) [above] {$y$}
+            |- (3,0) node (xaxis) [right] {$x$};
+        % Draw two intersecting lines
+        \draw (0,0) coordinate (a_1) -- (2,1.8) coordinate (a_2);
+        \draw (0,1.5) coordinate (b_1) -- (2.5,0) coordinate (b_2);
+        % Calculate the intersection of the lines a_1 -- a_2 and b_1 -- b_2
+        % and store the coordinate in c.
+        \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
+        % Draw lines indicating intersection with y and x axis. Here we use
+        % the perpendicular coordinate system
+        \draw[dashed] (yaxis |- c) node[left] {$y'$}
+            -| (xaxis -| c) node[below] {$x'$};
+        % Draw a dot to indicate intersection point
+        \fill[WLUYellow] (c) circle (2pt);
+    \end{tikzpicture}
+    \caption{A simple figure.}
+    \end{figure}
+
+    \bigskip
+
+    These should be used quite extensively to better make your point. This is
+    a visual sort of medium after all!
+\end{block}
+
+\begin{block}{Tables}
+    \begin{table}
+    \centering
+    \caption{Largest cities in the world (source: UN 2018 population estimates
+    from Wikipedia)}
+    \begin{tabular}{@{} lr @{}}
+        \toprule
+        City & Population\\
+        \midrule
+        Tokyo & 37,468,000 \\
+        Delhi & 28,514,000 \\
+        Shanghai & 25,582,000 \\
+        São Paolo & 21,650,000 \\
+        \bottomrule
+    \end{tabular}
+    \end{table}
+
+    \bigskip
+
+    Tables are also a good way to display data. Using the \texttt{booktabs}
+    package should make your tables look very nice indeed!
+\end{block}
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{0.3\paperwidth}
+
+\begin{exampleblock}{Example: Infinite Primes}
+    Imagine that there were only a limited number of prime numbers, and we could
+    list them as \(p_1, p_2, \ldots, p_n\). Now, consider the number formed by
+    multiplying all these primes together and then adding one, that is,
+    \[
+    N = p_1 \times p_2 \times \cdots \times p_n + 1.
+    \]
+
+    \bigskip
+
+    If you try to divide this new number \(N\) by any of the primes on your list,
+    you always get a remainder of 1. This means that none of the primes
+    \(p_1, p_2, \ldots, p_n\) can be a divisor of \(N\). Since every number
+    greater than 1 must have a prime factor, \(N\) must either be a prime
+    itself or be divisible by a prime that was not in our original list.
+
+    \bigskip
+
+    This simple observation shows that no matter how many primes you start with,
+    you can always construct a number that reveals at least one additional prime,
+    proving that there are infinitely many prime numbers.
+\end{exampleblock}
+
+\begin{exampleblock}{Example: Grönwall Inequality}
+    Suppose you have a nonnegative function \(u(t)\) that satisfies an inequality
+    of the form
+    \[
+        u(t) \le a + \int_{t_0}^t b(s)\, u(s) \dx[s],
+    \]
+    where \(a \ge 0\) is a constant and \(b(t) \ge 0\) is a given function. The
+    idea behind the inequality is that even though \(u(t)\) might depend on its
+    past values through the integral, its growth is controlled by the accumulation
+    of the function \(b(t)\).
+
+    \bigskip
+    To see how this control works, define an auxiliary function
+    \[
+        v(t) = a + \int_{t_0}^t b(s)\, u(s) \dx[s].
+    \]
+
+    Since \(u(t) \le v(t)\), differentiate \(v(t)\) with respect to \(t\) to obtain
+    \[
+        v'(t) = b(t)\, u(t) \le b(t)\, v(t).
+    \]
+
+    Dividing both sides by \(v(t)\) (which is positive) gives
+    \[
+        \frac{v'(t)}{v(t)} \le b(t).
+    \]
+
+    Integrating this inequality from \(t_0\) to \(t\) and exponentiating yields
+    \[
+        v(t) \le v(t_0) \exp\!\left(\int_{t_0}^t b(s)\, \dx[s]\right).
+    \]
+
+    Since \(v(t_0)=a\) and \(u(t) \le v(t)\), we conclude that
+    \[
+        u(t) \le a\, \exp\!\left(\int_{t_0}^t b(s)\, \dx[s]\right).
+    \]
+
+    \bigskip
+
+    This simple argument shows that if the function \(u(t)\) satisfies the original
+    integral inequality, then its value at any time \(t\) is bounded above by an
+    exponential function determined by the integral of \(b(t)\); this is precisely
+    the statement of the integral Grönwall inequality.
+\end{exampleblock}
+
+\begin{alertblock}{References}
+    \nocite{*}
+    \bibliographystyle{plain}
+    \bibliography{template}
+\end{alertblock}
+
+\end{column}
+\separatorcolumn
+\end{columns}
+\end{frame}
+
+\end{document}

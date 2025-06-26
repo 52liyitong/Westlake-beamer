@@ -1,0 +1,353 @@
+% SPDX-FileCopyrightText: 2025 Alexandru Fikl <alexfikl@gmail.com>
+% SPDX-License-Identifier: CC-BY-4.0
+% SPDX-FileCopyrightText: 2025 Anish Athalye <me@anishathalye.com>
+% SPDX-License-Identifier: MIT
+%
+% Usage:
+%   \usetheme[options]{wluposter}
+%
+
+%
+% Acknowledgement:
+%   The skeleton of this style file was copied from
+%   https://github.com/anishathalye/gemini
+%   though little of it remains.
+
+\def\fileversion{v0.2}
+\def\filedate{2025/04/14}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemewluposter}[\filedate \fileversion WLU Poster Theme]
+
+% <<< options
+
+\RequirePackage{ifthen}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+    family=wluposter,
+    prefix=wluposter@
+}
+
+% enable Myriad Pro
+\DeclareBoolOption[false]{nomyriadpro}
+% select language for logos
+\DeclareStringOption[english]{language}
+% show a debug layout grid
+\DeclareBoolOption[false]{showframe}
+\DeclareBoolOption[false]{layoutgrid}
+
+\ProcessOptionsBeamer
+\DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{beamerposter}}
+\ProcessKeyvalOptions*
+
+% >>>
+
+% <<< packages
+
+\RequirePackage{ifpdf}
+
+% fancy graphics
+\RequirePackage{beamerposter}
+\RequirePackage{tikz}
+
+% nicer command definitions
+\RequirePackage{xparse}
+% used in defining blocks
+\RequirePackage{adjustbox}
+\RequirePackage{colortbl}
+
+\ifwluposter@showframe
+    \RequirePackage{showframe}
+\fi
+
+\ifwluposter@layoutgrid
+    \RequirePackage[
+        grid,
+        gridunit=cm,
+        gridcolor=gray!70,
+        subgridcolor=gray!70,
+        texcoord]{eso-pic}
+\fi
+
+% remove navigation symbols
+\beamertemplatenavigationsymbolsempty
+
+% set colors
+\usecolortheme{wluposter}
+
+% >>>
+
+% <<< commands
+
+\ProvideDocumentCommand \footername { m } {\def\wluposter@footername{#1}}
+\ProvideDocumentCommand \footeremail { m } {\def\wluposter@footeremail{#1}}
+\ProvideDocumentCommand \footerlocation { m } {\def\wluposter@footerlocation{#1}}
+
+\ProvideDocumentCommand \heading { m } {%
+    \par\bigskip%
+    {\usebeamerfont{heading}\usebeamercolor[fg]{heading}#1}%
+    \par\smallskip}
+
+\ProvideDocumentCommand \separatorcolumn {} {\begin{column}{0.025\paperwidth}\end{column}}
+
+\NewDocumentCommand \headerlogoleft  { m } {\def\@headerlogoleft{#1}}
+\NewDocumentCommand \headerlogoright  { m } {\def\@headerlogoright{#1}}
+
+% >>>
+
+% <<< assets
+
+\headerlogoright{\includegraphics[width=0.07\paperwidth]{assets/xi2.png}}
+\ifthenelse{\equal{\wluposter@language}{english}}{
+    \headerlogoleft{\includegraphics[width=0.12\paperwidth]{assets/wlu-logo-en-alt.png}}
+}{
+\ifthenelse{\equal{\wluposter@language}{french}}{
+    \headerlogoleft{\includegraphics[width=0.12\paperwidth]{assets/wlu-logo-fr-alt.png}}
+}{
+    \PackageError{beamerthemewluposter}{Unknown language `\wluposter@language`}{}
+}}
+
+% >>>
+
+% <<< fonts
+
+\ifpdftex
+    \RequirePackage[utf8]{inputenc}
+    \RequirePackage[T1]{fontenc}
+\else
+    \RequirePackage{fontspec}
+\fi
+
+\ifwluposter@nomyriadpro
+    \ifpdftex
+        \usepackage{helvet}
+    \else
+        \IfFontExistsTF{Nimbus Sans}{
+            \setmainfont[Ligatures=TeX]{Nimbus Sans}
+            \setsansfont[Ligatures=TeX]{Nimbus Sans}
+        }{\PackageWarning{beamerthemewluposter}{Nimbus Sans font is not available.}}
+    \fi
+\else
+    \ifpdftex
+        \IfFileExists{MyriadPro.sty}{
+            \usepackage[onlytext, smallfamily, lf]{MyriadPro}
+        }{
+            \PackageWarning{beamerthemewluposter}{Myriad Pro font is not available to pdfLaTeX. Use the nomyriadpro option to silence this warning.}
+            \usepackage{helvet}}
+    \else
+        \IfFontExistsTF{Myriad Pro}{
+            \setmainfont[Ligatures=TeX]{Myriad Pro}
+            \setsansfont[Ligatures=TeX]{Myriad Pro}
+        }{
+            \PackageWarning{beamerthemewluposter}{Myriad Pro font is not available. Use the nomyriadpro option to silence this warning.}
+            \IfFontExistsTF{Nimbus Sans}{
+                \setmainfont[Ligatures=TeX]{Nimbus Sans}
+                \setsansfont[Ligatures=TeX]{Nimbus Sans}
+            }{\PackageWarning{beamerthemewluposter}{Nimbus Sans font is not available.}}
+        }
+    \fi
+\fi
+\renewcommand{\familydefault}{\sfdefault}
+
+\setbeamerfont{title}        {size=\LARGE, series=\bfseries}
+\setbeamerfont*{subtitle}    {size=\large, series=\mdseries}
+\setbeamerfont{author}       {size=\normalsize, series=\bfseries}
+\setbeamerfont{date}         {size=\small, series=\mdseries}
+
+\setbeamerfont{headline title}{size=\Huge,series=\bfseries}
+\setbeamerfont{headline author}{size=\Large}
+\setbeamerfont{headline institute}{size=\normalsize}
+\setbeamerfont{footline}     {size=\Large,series=\bfseries}
+
+\setbeamerfont*{heading}    {size=\normalsize, series=\bfseries}
+
+\setbeamerfont{alerted text} {size=\normalsize,series=\bfseries}
+\setbeamerfont{block title}{size=\Large,series=\bfseries}
+\setbeamerfont{block title alerted}{size=\Large,series=\bfseries}
+\setbeamerfont{block title example}{size=\Large,series=\bfseries}
+
+\setbeamerfont{page number in head/foot}{size=\tiny, series=\bfseries}
+\setbeamerfont{url text}{size=\scriptsize,series=\bfseries}
+\setbeamerfont{author in head/foot}{size=\scriptsize,series=\bfseries}
+
+\setbeamerfont{enumerate item}{size=\small, series=\bfseries}
+\setbeamerfont{description item}{size=\small, series=\bfseries}
+
+% >>>
+
+% <<< outer: header / footer
+
+% headline
+\newlength{\maxlogowidth}
+\setlength{\maxlogowidth}{0.25\paperwidth}
+
+\setbeamertemplate{headline}{
+    \begin{beamercolorbox}{headline}
+    \begin{columns}
+    \begin{column}{\maxlogowidth}
+        \vskip5ex
+        \vfill
+        \hspace*{1in}
+        \raggedright \@headerlogoleft
+        \vfill
+    \end{column}
+    \begin{column}{\dimexpr\paperwidth-\maxlogowidth-\maxlogowidth}
+        \usebeamerfont{headline}
+        \vskip 6ex
+        \centering
+        {
+            \usebeamerfont{headline title}
+            \usebeamercolor[fg]{headline title}
+            \inserttitle
+        }
+        \vspace{1em}
+
+        {
+            \usebeamerfont{headline author}
+            \usebeamercolor[fg]{headline author}
+            \insertauthor
+        }
+        \vspace{1em}
+
+        {
+            \usebeamerfont{headline institute}
+            \usebeamercolor[fg]{headline institute}
+            \insertinstitute
+        }
+        \vspace{1em}
+    \end{column}
+    \begin{column}{\maxlogowidth}
+        \@ifundefined{@headerlogoright}{}{
+        \vskip5ex
+        \vfill
+        \raggedleft \@headerlogoright
+        \hspace*{1in}
+        \vfill
+        }
+    \end{column}
+    \end{columns}
+    \vspace{5ex}
+    \ifbeamercolorempty[bg]{headline rule}{}{
+        \begin{beamercolorbox}[wd=\paperwidth,colsep=0.5ex]{headline rule}
+        \end{beamercolorbox}
+    }
+    \end{beamercolorbox}
+}
+
+% footline
+
+\setbeamertemplate{footline}{
+    \begin{beamercolorbox}[vmode]{headline}
+        \ifbeamercolorempty[bg]{headline rule}{}{
+            \begin{beamercolorbox}[wd=\paperwidth,colsep=0.25ex]{headline rule}
+            \end{beamercolorbox}}
+        \usebeamerfont{footline}
+        \centering
+        \vspace{1.25ex}
+        \hspace{0.025\paperwidth}
+        \@ifundefined{wluposter@footername}{}{\wluposter@footername}
+        \hfill
+        \@ifundefined{wluposter@footerlocation}{}{\wluposter@footerlocation}
+        \hfill
+        \@ifundefined{wluposter@footeremail}{}{\wluposter@footeremail}
+        \hspace{0.025\paperwidth}
+        \vspace{1.75ex}
+    \end{beamercolorbox}
+}
+
+% >>>
+
+% <<< inner
+
+% <<< itemize
+
+\setbeamertemplate{itemize item}{
+    \tikz{
+        \draw[fill=WLUYellow, draw=none] (0, 0) rectangle (0.1, 0.1);
+        \draw[fill=WLUYellow, draw=none] (0.1, 0.1) rectangle (0.2, 0.2);
+        \draw[fill=WLUYellow, draw=none] (0, 0.2) rectangle (0.1, 0.3);
+    }
+}
+
+\setbeamertemplate{itemize subitem}{
+    \tikz{
+        \draw[fill=WLUDarkBlue, draw=none] (0, 0) rectangle (0.075, 0.075);
+        \draw[fill=WLUDarkBlue, draw=none] (0.075, 0.075) rectangle (0.15, 0.15);
+        \draw[fill=WLUDarkBlue, draw=none] (0, 0.15) rectangle (0.075, 0.225);
+    }
+}
+
+\setbeamertemplate{itemize subsubitem}{
+    \tikz{
+        \draw[fill=white, draw=none] (0, 0) rectangle (0.075, 0.075);
+        \draw[fill=WLULightBlue, draw=none] (0.075, 0.075) rectangle (0.15, 0.15);
+        \draw[fill=white, draw=none] (0, 0.15) rectangle (0.075, 0.225);
+    }
+}
+
+% >>>
+
+% <<< blocks
+
+\setbeamertemplate{block begin}{
+    \begin{adjustbox}{max width=0.98\textwidth}
+    \begin{tabular}{!{\color{WLUDarkBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+        \centering
+        \begin{minipage}{0.96\linewidth}
+        \begin{beamercolorbox}{block title}
+            \usebeamerfont*{block title}
+            \vbox{}\vskip 0.2ex
+            \insertblocktitle
+        \end{beamercolorbox}
+        \vspace{2em}
+        \usebeamerfont*{block text}
+}
+\setbeamertemplate{block end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{3ex}}
+
+\setbeamertemplate{block alerted begin}{
+    \vspace{\fill}
+    \begin{adjustbox}{max width=0.98\textwidth}
+        \begin{tabular}{!{\color{WLUYellow}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+        \centering
+        \begin{minipage}{0.96\linewidth}
+    	    \begin{beamercolorbox}{alerted text}
+                \usebeamerfont*{block title}
+                \vbox{}\vskip 0.2ex
+                \insertblocktitle
+            \end{beamercolorbox}
+            \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
+            \usebeamerfont*{block text}
+}
+\setbeamertemplate{block alerted end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{2ex}}
+
+\setbeamertemplate{block example begin}{
+    \vspace{\fill}
+    \begin{adjustbox}{max width=0.98\textwidth}
+        \begin{tabular}{!{\color{WLULightBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+        \centering
+        \begin{minipage}{0.96\linewidth}
+    	    \begin{beamercolorbox}{example text}
+                \usebeamerfont*{block title}
+                \vbox{}\vskip 0.2ex
+                \insertblocktitle
+            \end{beamercolorbox}
+            \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
+            \usebeamerfont*{block text}
+}
+\setbeamertemplate{block example end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{2ex}}
+
+% >>>
+
+% <<< figures
+
+% disable "Figure:" in the captions
+\setbeamertemplate{caption}{\scriptsize\insertcaption}
+\setbeamertemplate{caption label separator}{}
+
+% >>>
+
+\setbeamertemplate{bibliography item}[text]
+
+% >>>
+
+%% vim: foldmarker=<<<,>>>:foldmethod=marker:nospell:filetype=tex 
